@@ -3,7 +3,7 @@ const res = require("express/lib/response");
 
 const app = express();
 
-app.get('', () => {
+app.get('', (req, res) => {
     res.status(200).json({
         status: true,
         message: "Server is live"
