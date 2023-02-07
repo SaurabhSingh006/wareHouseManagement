@@ -9,3 +9,7 @@ app.get('', () => {
         message: "Server is live"
     })
 });
+
+app.listen(5000, () => {
+    console.log("Server is listening at port 5000");
+})
