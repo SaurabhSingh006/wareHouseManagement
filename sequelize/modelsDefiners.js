@@ -1,3 +1,4 @@
 module.exports = [
-    require("./models/user")
+    require("./models/user"),
+    require("./models/transaction") 
 ];

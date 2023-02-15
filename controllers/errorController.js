@@ -4,6 +4,15 @@ const handleSequelizeUniqueConstraintError = (error) => {
     return new AppError(error.errors[0].message, 403);
 }
 
+const handleSequelizeValidationError = (error) => {
+    console.log(error);
+    return new AppError(error.errors[0].message, 403);
+}
+
+const handleSequelizeDatabaseError = (error) => {
+    return new AppError(error.parent.message, 403);
+}
+
 const sendErrorDev = (err, req, res) => {
   // A) API
   if (req.originalUrl.startsWith('/api')) {
@@ -58,13 +67,16 @@ module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-  if (process.env.NODE_ENV === 'developmentt') {
+  if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, req, res);
   } else if (process.env.NODE_ENV === 'development') {
     let error = { ...err };
     error.message = err.message;
 
     if (error.name === 'SequelizeUniqueConstraintError') error = handleSequelizeUniqueConstraintError(error);
+    else if (error.name === 'SequelizeValidationError') error = handleSequelizeValidationError(error);
+    else if (error.name === 'SequelizeDatabaseError') error = handleSequelizeDatabaseError(error);
+    
 
     sendErrorProd(error, req, res);
   }

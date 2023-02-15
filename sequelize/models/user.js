@@ -30,6 +30,11 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    balance: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 10000
+    },  
     passwordChangedAt: {
         type: DataTypes.DATE,
         allowNull: true

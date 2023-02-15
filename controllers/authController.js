@@ -57,7 +57,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     res.status(201).json({
         status: true,
         message: "User successfully registered",
-        user: newUser.username
+        user: newUser.username,
+        user_UID: newUser.user_UID
     });
 });
 

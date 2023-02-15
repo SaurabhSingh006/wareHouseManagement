@@ -32,10 +32,10 @@ const startApplication = async () => {
     console.log("Models relationship setup successfully");      
     
     // Syncronizing the database
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ alter: false });
 
     // Starting the app server
-    app.listen(PORT, () => {
+    app.listen(PORT, () => { 
         console.log(`Server is listening at port ${PORT}`);
     });
 };

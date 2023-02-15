@@ -24,6 +24,7 @@
         "jsonwebtoken": "^9.0.0",
         "nodemon": "^2.0.20",
         "pg": "^8.9.0",
+        "promisify": "^0.0.3",
         "sequelize": "^6.28.0"
     }
 }
